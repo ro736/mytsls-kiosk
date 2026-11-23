@@ -14,6 +14,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { AppState, Keyboard, Platform } from "react-native";
+import { KioskProvider } from "../context/KioskContext";
 import { VisitProvider } from "../context/VisitContext";
 
 async function hideAndroidBars() {
@@ -47,9 +48,11 @@ export default function RootLayout() {
 
   if (!loaded) return null;
   return (
-    <VisitProvider>
-      <StatusBar hidden />
-      <Stack screenOptions={{ headerShown: false, animation: "fade" }} />
-    </VisitProvider>
+    <KioskProvider>
+      <VisitProvider>
+        <StatusBar hidden />
+        <Stack screenOptions={{ headerShown: false, animation: "fade" }} />
+      </VisitProvider>
+    </KioskProvider>
   );
 }
