@@ -19,7 +19,7 @@ export default function Setup() {
   const params = useLocalSearchParams<{ server?: string; key?: string }>();
   const { credentials, isSetUp, setupMessage, saveSetup } = useKiosk();
 
-  const [server, setServer] = useState(credentials?.server ?? "http://sdip.tsls.com.fj/");
+  const [server, setServer] = useState(credentials?.server ?? "https://sdip.tsls.com.fj/");
   const [key, setKey] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
