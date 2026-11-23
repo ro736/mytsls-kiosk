@@ -86,7 +86,8 @@ function defaultMessage(status: number) {
 // ---------- Saved credentials + cached config ----------
 export function normalizeServer(s: string) {
   let v = s.trim();
-  if (!/^https?:\/\//i.test(v)) v = `http://${v}`;
+  // Default to https: the production server answers plain http with an IIS 500 page
+  if (!/^https?:\/\//i.test(v)) v = `https://${v}`;
   return v.endsWith("/") ? v : `${v}/`;
 }
 
